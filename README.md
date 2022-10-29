@@ -107,7 +107,9 @@ p = ggplot(df, aes(area = Freq, fill=factor(Var1,levels=unique(Var1)),label = pa
 ggsave(filename=paste0("C:/R/merge/valCL_treemap.png"),p,width=6,height=3)
 ```
 ![valCL_treemap](https://github.com/petclippy/merge/blob/main/valCL_treemap.png?raw=true)
-The second plot shows the % of validators not successfully participating at the finalized head of the chain
+
+
+The second plot shows the % of validators not successfully participating at the finalized head of the chain:
 ```R
 library(ggplot2)
 p = ggplot(epDat,aes(Ep,NotAttTargHead*100,color=Cl)) +
@@ -122,7 +124,9 @@ p = ggplot(epDat,aes(Ep,NotAttTargHead*100,color=Cl)) +
 ggsave(filename=paste0("C:/R/merge/notAttTargHeadCL.png"),p,width=10,height=4)
 ```
 ![notAttTargHeadCL](https://github.com/petclippy/merge/blob/main/notAttTargHeadCL.png?raw=true)
-The third and fourth plots are animations. They were made by looping through epochs to create one png to per epoch, then combining png's using the [gifski](https://github.com/ImageOptim/gifski) tool. To speed up the animation in the less interesting intervals and slow them down during Bellatrix or the merge, different intervals between making .png's was used.
+
+
+The third and fourth plots are animations. They were made by looping through epochs to create one png to per epoch, then combining png's using the [gifski](https://github.com/ImageOptim/gifski) tool. To speed up the animation in the less interesting intervals and slow them down during Bellatrix or the merge, different intervals between making .png's was used:
 ```R
 library(ggplot2)
 ep142000date = "2022-08-24"
@@ -199,9 +203,11 @@ for (ep in eps) {
   ggsave(filename=paste0("C:/R/merge/plot100-8_",min(eps),"-",max(eps),"/",ep,".png"),p,width=5,height=4)
 }
 ```
-:-------------------------:|:-------------------------:
-![plotBella](https://github.com/petclippy/merge/blob/main/plotBella.png?raw=true)  |  ![plotMerge8](https://github.com/petclippy/merge/blob/main/plotMerge8.png?raw=true)
-The fifth plot shows the head-1 attestation participation for slots as they are seen at the head.
+![plotBella](https://github.com/petclippy/merge/blob/main/plotBella.gif?raw=true)
+![plotMerge8](https://github.com/petclippy/merge/blob/main/plotMerge8.gif?raw=true)
+
+
+The fifth plot shows the head-1 attestation participation for slots as they are seen at the head:
 ```R
 library(data.table)
 library(ggplot2)
@@ -240,9 +246,11 @@ p = ggplot(pT[order(SlotInd)][Slot<postMergSlot][SlotInd<6],aes(factor(SlotInd,l
   labs(title="Before merge",x="Slot position inside epoch",y="% not attested for head-1 slot",fill="Validator client")
 ggsave(filename=paste0("C:/R/merge/headAtt_boxes_beforeMerg_below6.pdf"),p,width=5,height=3)
 ```
-:-------------------------:|:-------------------------:
-![headAtt_boxes_beforeMerg_below6](https://github.com/petclippy/merge/blob/main/headAtt_boxes_beforeMerg_below6.png?raw=true)  |  ![headAtt_boxes_postMerg_below6](https://github.com/petclippy/merge/blob/main/headAtt_boxes_postMerg_below6.png?raw=true)
-The sixth plot shows % missed block proposals.
+![headAtt_boxes_beforeMerg_below6](https://github.com/petclippy/merge/blob/main/headAtt_boxes_beforeMerg_below6.png?raw=true)
+![headAtt_boxes_postMerg_below6](https://github.com/petclippy/merge/blob/main/headAtt_boxes_postMerg_below6.png?raw=true)
+
+
+The sixth plot shows % missed block proposals:
 ```R
 library(ggplot2)
 p = ggplot(epDat,aes(Ep,PropMissRatio*100,group=Cl,color=Cl)) +
@@ -258,7 +266,9 @@ p = ggplot(epDat,aes(Ep,PropMissRatio*100,group=Cl,color=Cl)) +
 ggsave(p,file="C:/R/merge/propMissEp.png",width=10,height=4)
 ```
 ![propMissEp](https://github.com/petclippy/merge/blob/main/propMissEp.png?raw=true)
-The seventh plot shows the usage of the Flashblots relay.
+
+
+The seventh plot shows the usage of the Flashblots relay:
 ```R
 library(data.table)
 library(ggplot2)
@@ -290,7 +300,9 @@ p = ggplot(pT[Ep>146875],aes(Ep,PercFb,group=Cl,color=Cl)) +
 ggsave(p,file="C:/R/merge/fbEpClProp.png",width=10,height=4)
 ```
 ![fbEpClProp](https://github.com/petclippy/merge/blob/main/fbEpClProp.png?raw=true)
-The eighth and final (bonus) plot shows the luck of validator using different clients for getting block proposals.
+
+
+The eighth and final (bonus) plot shows the luck of validator using different clients for getting block proposals:
 ```R
 library(ggplot2)
 p = ggplot(epDat,aes(Ep,PropRatio*100,group=Cl,color=Cl)) +
