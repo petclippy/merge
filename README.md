@@ -1,4 +1,4 @@
-# Ethereum validator software, performance under pressure #
+# Ethereum validators, performing under pressure #
 
 
 ## Obtaining, importing and pre-processing the data ##
